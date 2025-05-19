@@ -5,380 +5,654 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrinho - Do Campo à Cidade</title>
     <style>
-        /* Estilos Gerais */
+        /* Estilos Globais */
+        :root {
+            --verde-escuro: #1B5E20;
+            --verde-medio: #2E7D32;
+            --verde-claro: #4CAF50;
+            --verde-bg: #E8F5E9;
+            --bege: #FFF8E1;
+            --marrom: #5D4037;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
         }
-
+        
         body {
-            background-color: #f5f5f5;
+            background-color: var(--bege);
             color: #333;
             line-height: 1.6;
         }
-
+        
         /* Cabeçalho */
         header {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
             color: white;
-            text-align: center;
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .logo img {
-            height: 80px;
-            margin-right: 1rem;
-        }
-
-        .logo h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .slogan {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-
-        /* Navegação */
-        nav {
-            background-color: #1b5e20;
-            padding: 1rem 0;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-
-        nav li {
-            margin: 0 1.5rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #a5d6a7;
-        }
-
-        /* Conteúdo Principal */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .hero {
-            background: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
-            border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 3rem;
         }
-
-        .hero::before {
-            content: '';
+        
+        header::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: url('https://img.freepik.com/vetores-gratis/fundo-de-textura-de-madeira_1390-14.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 0;
         }
-
-        .hero-content {
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
             z-index: 1;
-            padding: 2rem;
-            max-width: 800px;
         }
-
-        .hero h2 {
-            font-size: 2.5rem;
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-
-        .hero p {
-            font-size: 1.2rem;
+        
+        .logo-img {
+            height: 80px;
+            margin-right: 1rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-top: -5px;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: var(--marrom);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            margin: 0 1.2rem;
+            position: relative;
+        }
+        
+        .nav-item::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--verde-claro);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--verde-claro);
+        }
+        
+        /* Conteúdo Principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
         .btn {
             display: inline-block;
-            background-color: #4caf50;
+            background-color: var(--verde-claro);
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-
+        
         .btn:hover {
-            background-color: #2e7d32;
+            background-color: var(--verde-medio);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
-
-        /* Seções */
-        section {
+        
+        /* Sobre o Agrinho */
+        .about {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 3rem;
         }
-
+        
         .section-title {
             text-align: center;
             margin-bottom: 2rem;
-            color: #2e7d32;
-            font-size: 2rem;
+            color: var(--verde-escuro);
+            font-size: 2.2rem;
             position: relative;
+            padding-bottom: 1rem;
         }
-
+        
         .section-title::after {
-            content: '';
-            display: block;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background-color: #4caf50;
-            margin: 0.5rem auto;
+            background: linear-gradient(to right, var(--verde-claro), var(--verde-escuro));
+            border-radius: 2px;
         }
-
-        .card-container {
+        
+        .about-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            align-items: center;
             gap: 2rem;
         }
-
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .about-text {
+            flex: 1 1 60%;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1 1 35%;
+            border-radius: 10px;
             overflow: hidden;
-            flex: 1 1 300px;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card img {
+        
+        .about-image img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
         }
-
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Atividades */
+        .activities {
+            margin-bottom: 3rem;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .activity-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
         .card-content {
             padding: 1.5rem;
         }
-
-        .card h3 {
-            color: #2e7d32;
+        
+        .card-title {
+            color: var(--verde-escuro);
             margin-bottom: 1rem;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #1b5e20;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-section {
-            flex: 1 1 300px;
-            margin: 1rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .social-icons a {
-            color: white;
             font-size: 1.5rem;
-            margin: 0 0.5rem;
+        }
+        
+        .card-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-btn {
+            display: inline-block;
+            color: var(--verde-medio);
+            font-weight: bold;
+            text-decoration: none;
             transition: color 0.3s;
         }
-
-        .social-icons a:hover {
-            color: #a5d6a7;
+        
+        .card-btn:hover {
+            color: var(--verde-escuro);
         }
-
+        
+        /* Galeria */
+        .gallery {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Rodapé */
+        footer {
+            background: linear-gradient(to right, var(--verde-escuro), var(--marrom));
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--verde-claro);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--verde-claro);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--verde-claro);
+            transform: translateY(-3px);
+        }
+        
         .copyright {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
         }
-
+        
         /* Responsividade */
         @media (max-width: 768px) {
-            .logo h1 {
+            .logo-text h1 {
                 font-size: 2rem;
             }
-
-            nav ul {
+            
+            .logo-text span {
+                font-size: 1.2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
                 flex-direction: column;
-                align-items: center;
             }
-
-            nav li {
-                margin: 0.5rem 0;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .card {
+            
+            .about-text, .about-image {
                 flex: 1 1 100%;
             }
         }
     </style>
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header>
-        <div class="logo">
-            <img src="https://via.placeholder.com/80" alt="Logo Agrinho">
-            <h1>Agrinho</h1>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/80" alt="Logo Agrinho" class="logo-img">
+                <div class="logo-text">
+                    <h1>AGRINHO</h1>
+                    <span>Do Campo à Cidade</span>
+                </div>
+            </div>
         </div>
-        <p class="slogan">Do Campo à Cidade: Colhendo Oportunidades</p>
     </header>
-
+    
+    <!-- Navegação -->
     <nav>
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Sobre o Projeto</a></li>
-            <li><a href="#atividades">Atividades</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="#atividades" class="nav-link">Atividades</a></li>
+                <li class="nav-item"><a href="#galeria" class="nav-link">Galeria</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+        </div>
     </nav>
-
-    <main class="container">
-        <section id="inicio">
-            <div class="hero">
-                <div class="hero-content">
-                    <h2>Conectando o Campo e a Cidade</h2>
-                    <p>O programa Agrinho promove a integração entre o meio rural e urbano, mostrando a importância da agricultura para o desenvolvimento sustentável.</p>
-                    <a href="#sobre" class="btn">Saiba Mais</a>
-                </div>
+    
+    <!-- Conteúdo Principal -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Conectando o Campo e a Cidade</h1>
+                <p class="hero-subtitle">Descubra como a agricultura transforma vidas e alimenta o futuro</p>
+                <a href="#sobre" class="btn">Conheça o Projeto</a>
             </div>
         </section>
-
-        <section id="sobre">
+        
+        <!-- Sobre o Agrinho -->
+        <section id="sobre" class="about">
             <h2 class="section-title">Sobre o Agrinho</h2>
-            <p>O Agrinho é um programa de responsabilidade social do Sistema FAEP, voltado para a promoção da educação, saúde e cidadania, com foco na conexão entre o campo e a cidade. Através de atividades educativas, buscamos mostrar como a agricultura está presente no nosso dia a dia e sua importância para o desenvolvimento sustentável.</p>
-            <p>O tema "Do Campo à Cidade" destaca o fluxo de alimentos, tecnologia e conhecimento entre essas duas realidades, mostrando que ambas são interdependentes e essenciais para o progresso do país.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>O Programa Agrinho é uma iniciativa do Sistema FAEP que visa promover a educação, saúde e cidadania, com foco na conexão entre o campo e a cidade. Através de atividades educativas, mostramos como a agricultura está presente no nosso dia a dia e sua importância para o desenvolvimento sustentável.</p>
+                    <p>O tema "Do Campo à Cidade" destaca o fluxo de alimentos, tecnologia e conhecimento entre essas duas realidades, mostrando que ambas são interdependentes e essenciais para o progresso do país.</p>
+                    <p>Nossas ações buscam conscientizar sobre a importância do trabalho no campo, a qualidade dos alimentos que chegam à cidade e o papel de cada cidadão nesse ciclo virtuoso de produção e consumo consciente.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agricultura">
+                </div>
+            </div>
         </section>
-
-        <section id="atividades">
+        
+        <!-- Atividades -->
+        <section id="atividades" class="activities">
             <h2 class="section-title">Nossas Atividades</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Oficinas Educativas">
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Oficinas Educativas">
+                    </div>
                     <div class="card-content">
-                        <h3>Oficinas Educativas</h3>
-                        <p>Atividades práticas que mostram a jornada dos alimentos desde a produção no campo até a mesa do consumidor na cidade.</p>
+                        <h3 class="card-title">Oficinas Educativas</h3>
+                        <p class="card-text">Atividades práticas que mostram a jornada dos alimentos desde a produção no campo até a mesa do consumidor na cidade, com experimentos e demonstrações interativas.</p>
+                        <a href="#" class="card-btn">Saiba mais →</a>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Visitas Técnicas">
+                
+                <div class="activity-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Visitas Técnicas">
+                    </div>
                     <div class="card-content">
-                        <h3>Visitas Técnicas</h3>
-                        <p>Excursões a propriedades rurais e agroindústrias para conhecer de perto o processo produtivo.</p>
+                        <h3 class="card-title">Visitas Técnicas</h3>
+                        <p class="card-text">Excursões a propriedades rurais e agroindústrias para conhecer de perto o processo produtivo e a tecnologia aplicada no campo moderno.</p>
+                        <a href="#" class="card-btn">Saiba mais →</a>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concurso Cultural">
+                
+                <div class="activity-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concurso Cultural">
+                    </div>
                     <div class="card-content">
-                        <h3>Concurso Cultural</h3>
-                        <p>Estimulando a criatividade de estudantes através de redações, desenhos e projetos sobre a relação campo-cidade.</p>
+                        <h3 class="card-title">Concurso Cultural</h3>
+                        <p class="card-text">Estimulando a criatividade de estudantes através de redações, desenhos e projetos sobre a relação campo-cidade e a importância da agricultura.</p>
+                        <a href="#" class="card-btn">Saiba mais →</a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="galeria">
+        
+        <!-- Galeria -->
+        <section id="galeria" class="gallery">
             <h2 class="section-title">Galeria de Fotos</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agricultura">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agricultura Familiar">
+                    <div class="gallery-caption">Agricultura Familiar</div>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colheita">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tecnologia no Campo">
+                    <div class="gallery-caption">Tecnologia no Campo</div>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tecnologia Agrícola">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Alimentos Saudáveis">
+                    <div class="gallery-caption">Alimentos Saudáveis</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529310399831-ed472b81d589?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Educação Ambiental">
+                    <div class="gallery-caption">Educação Ambiental</div>
                 </div>
             </div>
         </section>
     </main>
-
+    
+    <!-- Rodapé -->
     <footer id="contato">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <p>Email: contato@agrinho.org.br</p>
-                <p>Telefone: (41) 9999-9999</p>
-                <p>Endereço: Rua da Agricultura, 123 - Curitiba/PR</p>
-            </div>
-            <div class="footer-section">
-                <h3>Redes Sociais</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre o Agrinho</h3>
+                <p>Programa de responsabilidade social do Sistema FAEP que promove a educação, saúde e cidadania, conectando o campo e a cidade.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Parceiros</h3>
-                <p>SENAR-PR</p>
-                <p>FAEP</p>
-                <p>Governo do Paraná</p>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre o Projeto</a></li>
+                    <li><a href="#atividades">Atividades</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contato@agrinho.org.br</li>
+                    <li><i class="fas fa-phone"></i> (41) 9999-9999</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Curitiba - PR, Brasil</li>
+                </ul>
             </div>
         </div>
+        
         <div class="copyright">
             <p>&copy; 2023 Programa Agrinho. Todos os direitos reservados.</p>
         </div>
     </footer>
-
-    <!-- Ícones do Font Awesome (adicionar link real no projeto) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </body>
 </html>
