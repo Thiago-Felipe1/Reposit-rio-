@@ -1,1 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho - Do Campo à Cidade</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: #1b5e20;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a5d6a7;
+        }
+
+        /* Conteúdo Principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2e7d32;
+        }
+
+        /* Seções */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2e7d32;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #4caf50;
+            margin: 0.5rem auto;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            flex: 1 1 300px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin: 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #a5d6a7;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/80" alt="Logo Agrinho">
+            <h1>Agrinho</h1>
+        </div>
+        <p class="slogan">Do Campo à Cidade: Colhendo Oportunidades</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre o Projeto</a></li>
+            <li><a href="#atividades">Atividades</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="inicio">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Conectando o Campo e a Cidade</h2>
+                    <p>O programa Agrinho promove a integração entre o meio rural e urbano, mostrando a importância da agricultura para o desenvolvimento sustentável.</p>
+                    <a href="#sobre" class="btn">Saiba Mais</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <h2 class="section-title">Sobre o Agrinho</h2>
+            <p>O Agrinho é um programa de responsabilidade social do Sistema FAEP, voltado para a promoção da educação, saúde e cidadania, com foco na conexão entre o campo e a cidade. Através de atividades educativas, buscamos mostrar como a agricultura está presente no nosso dia a dia e sua importância para o desenvolvimento sustentável.</p>
+            <p>O tema "Do Campo à Cidade" destaca o fluxo de alimentos, tecnologia e conhecimento entre essas duas realidades, mostrando que ambas são interdependentes e essenciais para o progresso do país.</p>
+        </section>
+
+        <section id="atividades">
+            <h2 class="section-title">Nossas Atividades</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Oficinas Educativas">
+                    <div class="card-content">
+                        <h3>Oficinas Educativas</h3>
+                        <p>Atividades práticas que mostram a jornada dos alimentos desde a produção no campo até a mesa do consumidor na cidade.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Visitas Técnicas">
+                    <div class="card-content">
+                        <h3>Visitas Técnicas</h3>
+                        <p>Excursões a propriedades rurais e agroindústrias para conhecer de perto o processo produtivo.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concurso Cultural">
+                    <div class="card-content">
+                        <h3>Concurso Cultural</h3>
+                        <p>Estimulando a criatividade de estudantes através de redações, desenhos e projetos sobre a relação campo-cidade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2 class="section-title">Galeria de Fotos</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Agricultura">
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colheita">
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tecnologia Agrícola">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@agrinho.org.br</p>
+                <p>Telefone: (41) 9999-9999</p>
+                <p>Endereço: Rua da Agricultura, 123 - Curitiba/PR</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Parceiros</h3>
+                <p>SENAR-PR</p>
+                <p>FAEP</p>
+                <p>Governo do Paraná</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Programa Agrinho. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Ícones do Font Awesome (adicionar link real no projeto) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</body>
+</html>
