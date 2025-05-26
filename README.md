@@ -1,6 +1,6 @@
 este repositorio servira para guardar os projetos de pensamento computacional
 
-colegio sagrada familia 2024 1D
+colegio sagrada familia 2025 2C
 
 
 ![The Rock fazendo cara suspeita](https://media1.tenor.com/m/z_0qn5PgD0sAAAAd/the-rock-look-the-rock-meme.gif)
